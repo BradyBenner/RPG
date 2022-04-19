@@ -1,0 +1,109 @@
+Game ideas
+------------
+1.save/load/new functionality-put buttons at bottom of avatar section for:
+	New character-leads to "new" page-
+		a. main page- saves avatar to local storage, then runs "new" page
+
+		b.has textboxes for name and player description,has default values for everything else including roomid,quest progress, levels, and equipment
+
+		c. cannot pick slot, 
+		d. on confirm: adds a new character object to saved array based on input text boxes and default, changes avatar to new values as well, saves saved array and avatar to local storage then reruns main page. pops up alert to tell player that new character has been made but player needs to hit finalize to save the changes permanently and return to main page
+		f. "cancel and return" button- reruns main page Without saving avatar nor saved array to local storage.
+
+	Save character- leads to save page
+		a. main page- saves avatar and room array to local storage,runs save page
+
+		b. has text box with radio buttons representing each non-empty slot in the saved array And a "new slot" radio button, shows name, level, and current room name.
+
+		c. has a confirm button to save avatar to either overwrite the selected slot or add avatar to a new slot (id) in saved array. pops up alert to tell player that character has been saved to certain slot  but player needs to hit finalize to save the changes permanently and return to main page
+
+		d. has a "finalize changes and return" action button to save saved array to local storage, then rerun main page
+
+		f. "cancel and return" button- reruns main page Without saving avatar nor saved array to local storage.
+
+	load character- leads to load and delete page-
+		a. main page-saves avatar and room array to local storage, then runs load page
+
+		b. displays a list of radio buttons with character names,levels, and locations (roomid name) for each id element in saved array
+		c. has a load button- on click it loads the info from selected element id from saved array to avatar array. 
+			 pops up alert to tell player that character with name,level, and current room has been loaded to current character  but player needs to hit finalize to save the changes permanently and return to main page
+
+		d. delete button- on click it removes the id element from the saved array.
+			 pops up alert to tell player that character with slot id,name,level, and room has been removed from saved characters  but player needs to hit finalize to save the changes permanently and return to main page
+
+		e. "finalize changes and return" button - saves avatar and saved array to local storage, then reruns main page
+
+		f. "cancel and return" button - reruns main page without saving avatar and saved array to local
+
+2. day/night cycle- 
+	a. alters ALL echance at night by 2*. initroom has to check if night (time = 20 || 24 || 4) then echancemod=2 else echancemod=1.  I might add another box under time picture to say day or night is coming to indicate what is GOING to be the state on next rest or passtime.  
+
+	b. need to change passtime function to accept a hour paramater. use passtime in walk functionality to passtime(1), rest to passtime(4), maybe search passtime(2). change if to check ranges of time, not 3 times.
+
+3. skills character screen- 
+	a. allows leveling and seeing what class levels and active and passive skills the avatar has.  
+
+	b. add class ,active skills, and passive skills lists chosen to avatar array (and make sure saved array works).
+
+	c. main page- saves avatar to local storage. runs skills page
+
+	d. has a box with radio buttons for each class and shows current levels for each
+
+	e. has a box showing current/new passive skills
+
+	f. has a box showing current/new active skills
+
+	g. has 2 buttons- one is show just current skills, other is show current skills and add new skills from radio button selected class.  these buttons refresh the active and passive skills boxes to show either Just the current active/passive skills OR current active/passive skills and append new active/passive skills based on class selected by radio button
+
+	h. has "add one level to selected class" button to add 1 to selected class- updates class attribute to +1 in avatar array, adds active and passive skills to array elements in avatar array based on class level added, adds health based on class to maxhealth and currenthealth to avatar array, then refreshes class, active, and passive boxes to show changes, also pops up alert button telling player that a certain class level has been added to his character but the player needs to hit the "finalize and return" button to save changes permanently and return to main page
+
+	f. "finalize and return button" - saves avatar to local storage, then reruns main page
+
+	g. "cancel and return" button- reruns main page without saving avatar to local storage
+
+	h. status box- shows current and max health, updated when a class is added.
+
+4. skills to add-magic! stealth! warrior skills, thief skills,priest skills
+
+5. equipment functionality-
+
+	A. enemies can drop gold and equipment- these are directly added/pushed to avatar gold and equipment[] in avatar
+
+	B. on equip screen, when confirmed, defence and damage are updated in avatar
+
+	C. items equipped can have special properties such as:
+		1. invisibility- check if certain items are equipped on room init, if so echancemod = 0.
+		2. maxhealth - on equip, add a certain amount to maxhealth and currenthealth to avatar arry- not a good idea
+		3. boots of speed- on walk, check if boots of speed are equipped, if so do not passtime.
+		4. teleport stone- add teleport to home functionality to room actions and combat actions (unless already added by skill), check and add on initactions
+		5. ???
+	D. equipment screen:
+		1. main screen- save avatar array to local storage
+		2. has stats box to show total defense and damage, possibly in center 
+		3. has large character image or outline with obvious head/body/hands/legs/feet.
+		4. equpment boxes - 
+			a. has scrolling radio input boxes for: head,cloak,chest,right hand,left hand, pants, and feet (possibly backpack for later)
+		 	
+		 	b. populate currently equipped item ("equipped: ", checked) (never "none" because avatar starts with default equipment, can't sell equipped items, and cannot replace equipped item with "none") in each box, then populate all carried items as well. items have a "slot" attribute in item array for this
+
+		 5. update equipment button- when pressed, 
+		 	a. for each addition will check if prereq class level is met.(to be added)
+
+		 	b. if met: will remove "currently" equipped item effects from avatar (damage,defence), then add (damage,defence) to avatar based on new item to equip
+
+		 	c. update equipped slots in avatar
+
+		 	d. add removed item to carried
+
+		 	e. remove item equipped from carried
+
+6. races - provide a "one time" bonus to defence, health, search chance,etc.  provide ongoing special effects such as health regen, health loss,infravision (no negative night effects such as search chance or pit chance etc),restriced class/equipment/skills
+
+7. search functionality - 
+	a. one time search chance modified by day/night
+	b. room loottable, perhaps having copies of items giving different chances: 
+		["rock","rock","rock","rusted short sword"]. or [{"name":rock","chance":75}{"name":"rusted short sword","chance":95}{"name":"Godly sword of Justice","chance":100}]
+
+	
+
+

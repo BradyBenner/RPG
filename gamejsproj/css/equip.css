@@ -1,0 +1,35 @@
+#avatarstats {
+	width:50%;
+}
+
+.equipcontainer {
+	width:100%;
+}
+.equipbox {
+	width:31.5%;
+	height:100px;
+	border:1px black solid;
+	float:left;
+
+}
+
+.equipbuttoncontainer {
+	width:49%;
+	height:60px;
+	float:right;
+	/*height:100%;*/
+	/*border:2px solid red;*/
+}
+
+.equipbutton {
+	position: relative;
+	top: 50%;
+	left:40%;
+}
+
+#avatarimg {
+	border:2px red solid;
+	/*height:100%;*/
+	width:20%;
+	float:right;
+}
